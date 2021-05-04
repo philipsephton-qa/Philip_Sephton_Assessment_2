@@ -1,8 +1,6 @@
 package com.qa.pokemon.domain;
 
-import org.springframework.stereotype.Component;
 
-@Component
 public class Pokemon {
 
 	private Long id;
@@ -18,6 +16,9 @@ public class Pokemon {
 	private Boolean evolves;
 
 
+	public Pokemon() {
+		super();
+	}
 	public Pokemon(Long id, Long pokeDex, String name, String type1, String type2, Long attack, Long defence,
 			Long speed, String weakness1, String weakness2, Boolean evolves) {
 		super();
