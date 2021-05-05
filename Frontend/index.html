@@ -142,7 +142,7 @@
     </div>
     <div id="alertResponse"></div>
     <br/>
-    <table id="data" class="container text-center">
+    <table id="data" onload="initialise();" class="container text-center">
         <thead><h3 class="text-center">Pokemon</h3></thead>
         <tbody id="dataBank"></tbody>
     </table>
@@ -237,7 +237,7 @@
             <label for="evolvesUp">Does the Pokemon Evolve?</label>
             <input type="radio" name="evolves" id="evolvesUp" value="yes">Yes</label>
             <input type="radio" name="evolves" id="evolvesUp" value="no">No</label>
-            <input type="submit" value="save" class="btn btn-success">
+            <input type="button" onclick="updatePokemon();" value="save" class="btn btn-success">
             <a onclick="closeInput()" aria-label="close">&#10006;</a>
         </form>
 

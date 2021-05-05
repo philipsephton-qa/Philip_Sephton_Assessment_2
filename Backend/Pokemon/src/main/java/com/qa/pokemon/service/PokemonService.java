@@ -1,12 +1,8 @@
 package com.qa.pokemon.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.text.html.Option;
-
-import org.springframework.stereotype.Component;
 import com.qa.pokemon.domain.Pokemon;
 import com.qa.pokemon.repo.PokemonRepo;
 

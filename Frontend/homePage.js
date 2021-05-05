@@ -22,16 +22,16 @@ const EVOLVESUP = document.querySelector(`#evolvesUp`);
 const DATABANK = document.querySelector(`#dataBank`);
 const ALERT = document.querySelector(`#alertResponse`);
 
-const server = "http://localhost:8080"
 
-axios
-    .get(server)
+const initialise = () =>{
+axios.get("http://localhost:8080/getAll")
     .then((response)=>{
-        for(let data of response.data){
-            printToScreen(data)
+        for(let abc of response.data){
+            printToScreen(abc);
         }
     })
     .catch((error)=> console.error(error));
+}
 
 const printToScreen = (information) =>{
     const br = document.createElement("br")
@@ -81,19 +81,17 @@ const createPokemon = () =>{
     const EVOLVES_VALUE = EVOLVES.value;
 
     let obj = {
-        pokedex : POKEDEX_VALUE,
+        pokeDex : POKEDEX_VALUE,
         name : NAME_VALUE,
         attack : ATTACK_VALUE,
         defence : DEFENCE_VALUE,
         speed : SPEED_VALUE,
-        primaryType : PRIMARYTYPE_VALUE,
-        secondaryType : SECONDARYTYPE_VALUE,
-        primaryWeakness : PRIMARYWEAKNESS_VALUE,
-        secondaryWeakness : SECONDARYWEAKNESS_VALUE,
+        type1 : PRIMARYTYPE_VALUE,
+        type2 : SECONDARYTYPE_VALUE,
+        weakness1 : PRIMARYWEAKNESS_VALUE,
+        weakness2 : SECONDARYWEAKNESS_VALUE,
         evolves : EVOLVES_VALUE
     }
-    console.log(obj)
-
     axios
         .post("http://localhost:8080/create", obj)
         .then( (response) => {
@@ -108,7 +106,8 @@ const createPokemon = () =>{
 }
 
 const updatePokemon = () =>{
-    POKEDEXUP.value = this.POKEDEX.value
+    const id = 1;
+    const POKEDEX_VALUE = POKEDEXUP.value
     const NAME_VALUE = NAMEUP.value;
     const ATTACK_VALUE = ATTACKUP.value;
     const DEFENCE_VALUE = DEFENCEUP.value;
@@ -131,13 +130,11 @@ const updatePokemon = () =>{
         secondaryWeakness : SECONDARYWEAKNESS_VALUE,
         evolves : EVOLVES_VALUE
     }
-    console.log(obj)
-
     axios
-        .post("", obj)
+        .put("http://localhost:8080/update/"+id, obj)
         .then( (response) => {
             ALERT.setAttribute("class", "alert alert-success");
-            ALERT.innerHTML = "Pokemon has been created";
+            ALERT.innerHTML = "Pokemon has been updated";
             setTimeout( () => {
                 ALERT.removeAttribute("class");
                 ALERT.innerHTML = ""
@@ -154,5 +151,6 @@ const updatePokemonBox = () => {
 }
 
 const removePokemon = () => {
-    obj.splice
+
+    
 }
