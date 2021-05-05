@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import com.qa.pokemon.domain.Pokemon;
 @Component
 public interface Service {
-	boolean create(Pokemon p);
+	Pokemon create(Pokemon p);
 	List<Pokemon> getAll();
-	Pokemon getById(int id);
-	Pokemon updatePokemon(int id, Pokemon p);
-	Pokemon removePokemon(int id);
+	Pokemon getById(Long id);
+	Pokemon updatePokemon(Long id, Pokemon p);
+	boolean removePokemon(Long id);
 	
 
 }

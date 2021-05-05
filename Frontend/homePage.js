@@ -22,14 +22,16 @@ const EVOLVESUP = document.querySelector(`#evolvesUp`);
 const DATABANK = document.querySelector(`#dataBank`);
 const ALERT = document.querySelector(`#alertResponse`);
 
-// axios
-//     .get("")
-//     .then((response)=>{
-//         for(let data of response.data){
-//             printToScreen(data)
-//         }
-//     })
-//     .catch((error)=> console.error(error));
+const server = "http://localhost:8080"
+
+axios
+    .get(server)
+    .then((response)=>{
+        for(let data of response.data){
+            printToScreen(data)
+        }
+    })
+    .catch((error)=> console.error(error));
 
 const printToScreen = (information) =>{
     const br = document.createElement("br")
@@ -93,7 +95,7 @@ const createPokemon = () =>{
     console.log(obj)
 
     axios
-        .post("", obj)
+        .post("http://localhost:8080/create", obj)
         .then( (response) => {
             ALERT.setAttribute("class", "alert alert-success");
             ALERT.innerHTML = "Pokemon has been created";
