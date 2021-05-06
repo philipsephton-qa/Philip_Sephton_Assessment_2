@@ -43,7 +43,7 @@ public class PokemonService implements Service{
 		pokemonToUpdate.get().setType2(p.getType2());
 		pokemonToUpdate.get().setWeakness1(p.getWeakness1());
 		pokemonToUpdate.get().setWeakness2(p.getWeakness2());
-		return this.repo.saveAndFlush(null);
+		return this.repo.saveAndFlush(pokemonToUpdate.get());
 		
 		}
 

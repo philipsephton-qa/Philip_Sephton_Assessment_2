@@ -1,3 +1,4 @@
+drop schema if exists spring cascade;
 create schema spring;
 use spring;
 create table pokemon (

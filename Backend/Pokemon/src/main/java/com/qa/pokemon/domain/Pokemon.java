@@ -22,6 +22,89 @@ public class Pokemon {
 	private Boolean evolves;
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((attack == null) ? 0 : attack.hashCode());
+		result = prime * result + ((defence == null) ? 0 : defence.hashCode());
+		result = prime * result + ((evolves == null) ? 0 : evolves.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((pokeDex == null) ? 0 : pokeDex.hashCode());
+		result = prime * result + ((speed == null) ? 0 : speed.hashCode());
+		result = prime * result + ((type1 == null) ? 0 : type1.hashCode());
+		result = prime * result + ((type2 == null) ? 0 : type2.hashCode());
+		result = prime * result + ((weakness1 == null) ? 0 : weakness1.hashCode());
+		result = prime * result + ((weakness2 == null) ? 0 : weakness2.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pokemon other = (Pokemon) obj;
+		if (attack == null) {
+			if (other.attack != null)
+				return false;
+		} else if (!attack.equals(other.attack))
+			return false;
+		if (defence == null) {
+			if (other.defence != null)
+				return false;
+		} else if (!defence.equals(other.defence))
+			return false;
+		if (evolves == null) {
+			if (other.evolves != null)
+				return false;
+		} else if (!evolves.equals(other.evolves))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (pokeDex == null) {
+			if (other.pokeDex != null)
+				return false;
+		} else if (!pokeDex.equals(other.pokeDex))
+			return false;
+		if (speed == null) {
+			if (other.speed != null)
+				return false;
+		} else if (!speed.equals(other.speed))
+			return false;
+		if (type1 == null) {
+			if (other.type1 != null)
+				return false;
+		} else if (!type1.equals(other.type1))
+			return false;
+		if (type2 == null) {
+			if (other.type2 != null)
+				return false;
+		} else if (!type2.equals(other.type2))
+			return false;
+		if (weakness1 == null) {
+			if (other.weakness1 != null)
+				return false;
+		} else if (!weakness1.equals(other.weakness1))
+			return false;
+		if (weakness2 == null) {
+			if (other.weakness2 != null)
+				return false;
+		} else if (!weakness2.equals(other.weakness2))
+			return false;
+		return true;
+	}
 	public Pokemon() {
 		super();
 	}

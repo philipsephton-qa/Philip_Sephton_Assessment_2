@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.qa.pokemon.domain.Pokemon;
 import com.qa.pokemon.service.PokemonService;
 
 @RestController
+@CrossOrigin
 public class PokemonController {
 	private PokemonService service;
 	public PokemonController(PokemonService service) {
