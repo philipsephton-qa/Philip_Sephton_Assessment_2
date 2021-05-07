@@ -40,11 +40,19 @@ public class PokemonControllerIntegrationTest {
 				post("/create")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(bulbasaurAsJSON);
-		Pokemon savedBulbasaur = new Pokemon(2L, 1L, "bulbasaur", "grass", "poison", 3L, 3L, 3L, "fire", "ground", true);
-		String savedBulbasaurAsJSON = this.mapper.writeValueAsString(savedBulbasaur);
 		ResultMatcher matchStatus = status().isCreated();
-		ResultMatcher matchBody = content().json(savedBulbasaurAsJSON);
-		this.mockMVC.perform(mockRequest).andExpect(matchStatus).andExpect(matchBody);
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
+	}
+	@Test
+	void testCreateRE() throws Exception {
+		Pokemon bulbasaur = new Pokemon(2L, 1L, "bulbasaur", "grass", "poison", 3L, 3L, 3L, "fire", "ground", true);
+		String bulbasaurAsJSON = this.mapper.writeValueAsString(bulbasaur);
+		RequestBuilder mockRequest =
+				post("/create/1")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(bulbasaurAsJSON);
+		ResultMatcher matchStatus = status().is4xxClientError();
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
 	}
 	@Test
 	void testRead() throws Exception {
@@ -54,7 +62,24 @@ public class PokemonControllerIntegrationTest {
 		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
 	}
 	@Test
+	void testReadRE() throws Exception {
+		RequestBuilder mockRequest =
+				get("/getAll/1");
+		ResultMatcher matchStatus = status().is4xxClientError();
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
+	}
+	@Test
 	void testReadOne() throws Exception {
+		RequestBuilder mockRequest =
+				get("/getOne/1");
+		Pokemon savedBulbasaur = new Pokemon(1L, 1L, "bulbasaur", "grass", "poison", 3L, 3L, 3L, "fire", "ground", true);
+		String savedBulbasaurAsJSON = this.mapper.writeValueAsString(savedBulbasaur);
+		ResultMatcher matchStatus = status().isOk();
+		ResultMatcher matchBody = content().json(savedBulbasaurAsJSON);
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus).andExpect(matchBody);
+	}
+	@Test
+	void testReadOneRE() throws Exception {
 		RequestBuilder mockRequest =
 				get("/getOne/1");
 		Pokemon savedBulbasaur = new Pokemon(1L, 1L, "bulbasaur", "grass", "poison", 3L, 3L, 3L, "fire", "ground", true);
@@ -71,17 +96,32 @@ public class PokemonControllerIntegrationTest {
 				put("/update/1")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(bulbasaurAsJSON);
-//		Pokemon savedBulbasaur = new Pokemon(1L, 1L, "bulbasaur", "grass", "poison", 3L, 4L, 3L, "fire", "ground", true);
-//		String savedBulbasaurAsJSON = this.mapper.writeValueAsString(savedBulbasaur);
 		ResultMatcher matchStatus = status().isAccepted();
-//		ResultMatcher matchBody = content().json(savedBulbasaurAsJSON);
-		this.mockMVC.perform(mockRequest).andExpect(matchStatus);//.andExpect(matchBody);
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
+	}
+	@Test
+	void testUpdateRE() throws Exception {
+		Pokemon bulbasaur = new Pokemon(1L, "bulbasaur", "grass", "poison", 3L, 4L, 3L, "fire", "ground", true);
+		String bulbasaurAsJSON = this.mapper.writeValueAsString(bulbasaur);
+		RequestBuilder mockRequest =
+				put("/update/one")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(bulbasaurAsJSON);
+		ResultMatcher matchStatus = status().is4xxClientError();
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
 	}
 	@Test
 	void testDelete() throws Exception {
 		RequestBuilder mockRequest =
 				delete("/remove/1");
 		ResultMatcher matchStatus = status().isOk();
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
+	}
+	@Test
+	void testDeleteRE() throws Exception {
+		RequestBuilder mockRequest =
+				delete("/remove/one");
+		ResultMatcher matchStatus = status().is4xxClientError();
 		this.mockMVC.perform(mockRequest).andExpect(matchStatus);
 	}
 }
