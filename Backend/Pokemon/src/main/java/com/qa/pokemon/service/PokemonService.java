@@ -26,24 +26,24 @@ public class PokemonService implements Service{
 
 	@Override
 	public Pokemon getById(Long id) {
-		Optional<Pokemon> optionalCharacter = this.repo.findById(id);
-		return optionalCharacter.get();
+		Pokemon optionalCharacter = this.repo.findById(id).orElseThrow();
+		return optionalCharacter;
 	}
 
 	@Override
 	public Pokemon updatePokemon(Long id, Pokemon p) {
-		Optional<Pokemon> pokemonToUpdate = repo.findById(id);
-		pokemonToUpdate.get().setAttack(p.getAttack());
-		pokemonToUpdate.get().setDefence(p.getDefence());
-		pokemonToUpdate.get().setEvolves(p.getEvolves());
-		pokemonToUpdate.get().setName(p.getName());
-		pokemonToUpdate.get().setPokeDex(p.getPokeDex());
-		pokemonToUpdate.get().setSpeed(p.getSpeed());
-		pokemonToUpdate.get().setType1(p.getType1());
-		pokemonToUpdate.get().setType2(p.getType2());
-		pokemonToUpdate.get().setWeakness1(p.getWeakness1());
-		pokemonToUpdate.get().setWeakness2(p.getWeakness2());
-		return this.repo.saveAndFlush(pokemonToUpdate.get());
+		Pokemon pokemonToUpdate = repo.findById(id).orElseThrow();
+		pokemonToUpdate.setAttack(p.getAttack());
+		pokemonToUpdate.setDefence(p.getDefence());
+		pokemonToUpdate.setEvolves(p.getEvolves());
+		pokemonToUpdate.setName(p.getName());
+		pokemonToUpdate.setPokeDex(p.getPokeDex());
+		pokemonToUpdate.setSpeed(p.getSpeed());
+		pokemonToUpdate.setType1(p.getType1());
+		pokemonToUpdate.setType2(p.getType2());
+		pokemonToUpdate.setWeakness1(p.getWeakness1());
+		pokemonToUpdate.setWeakness2(p.getWeakness2());
+		return this.repo.saveAndFlush(pokemonToUpdate);
 		
 		}
 
