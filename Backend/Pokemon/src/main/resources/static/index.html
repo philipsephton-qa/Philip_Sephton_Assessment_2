@@ -125,8 +125,8 @@
                             </div>
                             <label for="evolves">Does the Pokemon Evolve?</label>
                             <select name="evolves" id="evolves">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
                             </select>
 
                             <div class="modal-footer">
@@ -142,9 +142,11 @@
         </div>
     </div>
     <div id="alertResponse"></div>
-    <br/>
+    <br />
     <table id="data" class="container text-center">
-        <thead><h3 class="text-center">Pokemon</h3></thead>
+        <thead>
+            <h3 class="text-center">Pokemon</h3>
+        </thead>
         <tbody id="dataBank"></tbody>
     </table>
     <div class="container" id="delete-box" role="aria-hidden">
@@ -236,8 +238,10 @@
                 </select>
             </div>
             <label for="evolvesUp">Does the Pokemon Evolve?</label>
-            <input type="radio" name="evolves" id="evolvesUp" value="yes">Yes</label>
-            <input type="radio" name="evolves" id="evolvesUp" value="no">No</label>
+            <select name="evolves" id="evolvesUp">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select><br/>
             <input type="button" onclick="updatePokemon();" value="save" class="btn btn-success">
             <a onclick="closeInput()" aria-label="close">&#10006;</a>
         </form>

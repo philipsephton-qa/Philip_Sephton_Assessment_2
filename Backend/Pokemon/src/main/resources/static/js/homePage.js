@@ -21,6 +21,8 @@ const SECONDARYWEAKNESSUP = document.querySelector(`#pokemonSecondaryWeaknessUp`
 const EVOLVESUP = document.querySelector(`#evolvesUp`);
 const DATABANK = document.querySelector(`#dataBank`);
 const ALERT = document.querySelector(`#alertResponse`);
+const config = { headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'} };
+var id;
 
 let bank = [];
 const bankFunc =(information) =>{
@@ -51,19 +53,19 @@ const printToScreen = (information) => {
     const td2 = document.createElement("td");
     const td3 = document.createElement("td");
     const td4 = document.createElement("td");
-    const pokemon1 = document.createTextNode(`Pokedex Number: ${information.pokeDex}, Name: ${information.name}, Evolves: ${information.evolves}`)
+    const pokemon1 = document.createTextNode(`Name: ${information.name}, Id: ${information.id}, Pokedex Number: ${information.pokeDex}, Evolves: ${information.evolves}`)
     const pokemon2 = document.createTextNode(`Attack: ${information.attack}, Defence: ${information.defence}, Speed: ${information.speed}`)
     const pokemon3 = document.createTextNode(`Type: ${information.type1} ${information.type2}, Weakness: ${information.weakness1} ${information.weakness2}`)
 
     const upBtn = document.createElement('button');
     upBtn.innerHTML = `Update`
     upBtn.setAttribute("class", "btn btn-warning");
-    upBtn.setAttribute("onclick", "updatePokemonBox();");
+    upBtn.addEventListener("click", () => updatePokemonBox(information.id));
 
-    const rmBtn = document.createElement('button');
-    rmBtn.innerHTML = `Remove`
+    const rmBtn = document.createElement("a");
+    rmBtn.innerText = `Remove`;
     rmBtn.setAttribute("class", "btn btn-danger");
-    rmBtn.setAttribute("onclick", "removePokemon();");
+    rmBtn.addEventListener("click", () => removePokemon(information.id));
 
     td1.appendChild(pokemon1);
     td2.appendChild(pokemon2);
@@ -90,7 +92,6 @@ const createPokemon = () => {
     const SECONDARYWEAKNESS_VALUE = SECONDARYWEAKNESS.value;
     const EVOLVES_VALUE = EVOLVES.value;
 
-    const config = { headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'} };
 
     let obj = {
         pokeDex: POKEDEX_VALUE,
@@ -106,31 +107,18 @@ const createPokemon = () => {
     }
     console.log(obj);
     axios
-        .post("http://localhost:8080/create", config, {
-            pokeDex: POKEDEX_VALUE,
-            name: NAME_VALUE,
-            attack: ATTACK_VALUE,
-            defence: DEFENCE_VALUE,
-            speed: SPEED_VALUE,
-            type1: PRIMARYTYPE_VALUE,
-            type2: SECONDARYTYPE_VALUE,
-            weakness1: PRIMARYWEAKNESS_VALUE,
-            weakness2: SECONDARYWEAKNESS_VALUE,
-            evolves: EVOLVES_VALUE
-        })
-        .then((response) => {
-            ALERT.setAttribute("class", "alert alert-success");
-            ALERT.innerHTML = "Pokemon has been created";
-            setTimeout(() => {
-                ALERT.removeAttribute("class");
-                ALERT.innerHTML = ""
-            }, 1000)
+        .post("http://localhost:8080/create", obj, {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        }).then((response) => {
+            console.log(response);
         })
         .catch((error) => console.error(error));
+        location.reload();
 }
 
 const updatePokemon = () => {
-//    const id = bank[0].id;
+    const PID= parseInt(id);
+    console.log(PID);
     const POKEDEX_VALUE = POKEDEXUP.value
     const NAME_VALUE = NAMEUP.value;
     const ATTACK_VALUE = ATTACKUP.value;
@@ -155,7 +143,7 @@ const updatePokemon = () => {
         evolves: EVOLVES_VALUE
     }
     axios
-        .put("http://localhost:8080/update/" + id, {
+        .put("http://localhost:8080/update/" + PID, {
             "headers": {
                 "Access-Control-Allow-Origin": "*"
             }
@@ -174,18 +162,15 @@ const updatePokemon = () => {
 const closeInput = () => {
     document.getElementById(`update-box`).style.display = `none`;
 }
-const updatePokemonBox = () => {
-    document.getElementById(`update-box`).style.display = `block`
+const updatePokemonBox = (id) => {
+    document.getElementById(`update-box`).style.display = `block`;
+    this.id = id;
+    console.log(id)
 }
 
-const removePokemon = () => {
-    let id = bank[0].id;
-    axios.delete("http://localhost:8080/remove/" + id, {
-        "headers": {
-            "Access-Control-Allow-Origin": "*"
-        }
-    }
-    )
+const removePokemon = (id) => {
+    console.log(id);
+    axios.delete("http://localhost:8080/remove/" + id, config)
         .then((response) => {
             ALERT.setAttribute("class", "alert alert-success");
             ALERT.innerHTML = "Pokemon has been Deleted";
