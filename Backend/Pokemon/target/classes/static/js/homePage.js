@@ -21,14 +21,8 @@ const SECONDARYWEAKNESSUP = document.querySelector(`#pokemonSecondaryWeaknessUp`
 const EVOLVESUP = document.querySelector(`#evolvesUp`);
 const DATABANK = document.querySelector(`#dataBank`);
 const ALERT = document.querySelector(`#alertResponse`);
-const config = { headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'} };
+const config = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500' } };
 var id;
-
-let bank = [];
-const bankFunc =(information) =>{
-    bank.push(information);
-}
-console.log(bank);
 
 
 const initialise = () => {
@@ -40,7 +34,6 @@ const initialise = () => {
         .then((response) => {
             for (let abc of response.data) {
                 printToScreen(abc);
-                bankFunc(abc);
             }
         })
         .catch((error) => console.error(error));
@@ -105,20 +98,18 @@ const createPokemon = () => {
         weakness2: SECONDARYWEAKNESS_VALUE,
         evolves: EVOLVES_VALUE
     }
-    console.log(obj);
     axios
         .post("http://localhost:8080/create", obj, {
-            headers: {'Access-Control-Allow-Origin': '*'}
+            headers: { 'Access-Control-Allow-Origin': '*' }
         }).then((response) => {
             console.log(response);
         })
         .catch((error) => console.error(error));
-        //location.reload();
+    location.reload();
 }
 
 const updatePokemon = () => {
-    const PID= parseInt(id);
-    console.log(PID);
+    const PID = parseInt(id);
     const POKEDEX_VALUE1 = POKEDEXUP.value
     const NAME_VALUE1 = NAMEUP.value;
     const ATTACK_VALUE1 = ATTACKUP.value;
@@ -142,7 +133,6 @@ const updatePokemon = () => {
         weakness2: SECONDARYWEAKNESS_VALUE1,
         evolves: EVOLVES_VALUE1
     }
-    console.log(obj);
     axios
         .put("http://localhost:8080/update/" + PID, obj, {
             "headers": {
@@ -150,14 +140,14 @@ const updatePokemon = () => {
             }
         })
         .then((response) => {
-console.log(response);
+            console.log(response);
             setTimeout(() => {
                 ALERT.removeAttribute("class");
                 ALERT.innerHTML = ""
             }, 1000)
         })
         .catch((error) => console.error(error));
-        //location.reload();
+    location.reload();
 }
 
 const closeInput = () => {
@@ -166,7 +156,6 @@ const closeInput = () => {
 const updatePokemonBox = (id) => {
     document.getElementById(`update-box`).style.display = `block`;
     this.id = id;
-    console.log(id)
 }
 
 const removePokemon = (id) => {
@@ -181,7 +170,7 @@ const removePokemon = (id) => {
             }, 1000)
         })
         .catch((error) => console.error(error));
-        location.reload();
+    location.reload();
 
 
 }
