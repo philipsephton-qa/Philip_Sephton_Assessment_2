@@ -1,0 +1,1 @@
+INSERT INTO `pokemon`(`poke_dex`,`name`,`type1`,`type2`,`attack`,`defence`,`speed`,`weakness1`,`weakness2`,`evolves`) VALUES(1, 'bulbasaur', 'grass', 'poison', 3, 3, 3, 'fire', 'ground', true);

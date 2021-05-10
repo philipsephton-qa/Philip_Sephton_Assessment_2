@@ -59,7 +59,6 @@ public class PokemonServiceUnitTest {
 		Mockito.when(this.repo.saveAndFlush(bulbasaur)).thenReturn(bulbasaur);
 		assertThat(this.service.updatePokemon(1L, bulbasaur)).isNotNull();
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
-		Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(bulbasaur);
 	}
 	@Test
 	void testRemove() {

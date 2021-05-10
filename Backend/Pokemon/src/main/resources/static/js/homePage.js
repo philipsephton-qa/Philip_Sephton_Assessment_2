@@ -21,14 +21,8 @@ const SECONDARYWEAKNESSUP = document.querySelector(`#pokemonSecondaryWeaknessUp`
 const EVOLVESUP = document.querySelector(`#evolvesUp`);
 const DATABANK = document.querySelector(`#dataBank`);
 const ALERT = document.querySelector(`#alertResponse`);
-const config = { headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'} };
+const config = { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500' } };
 var id;
-
-let bank = [];
-const bankFunc =(information) =>{
-    bank.push(information);
-}
-console.log(bank);
 
 
 const initialise = () => {
@@ -40,7 +34,6 @@ const initialise = () => {
         .then((response) => {
             for (let abc of response.data) {
                 printToScreen(abc);
-                bankFunc(abc);
             }
         })
         .catch((error) => console.error(error));
@@ -105,58 +98,56 @@ const createPokemon = () => {
         weakness2: SECONDARYWEAKNESS_VALUE,
         evolves: EVOLVES_VALUE
     }
-    console.log(obj);
     axios
         .post("http://localhost:8080/create", obj, {
-            headers: {'Access-Control-Allow-Origin': '*'}
+            headers: { 'Access-Control-Allow-Origin': '*' }
         }).then((response) => {
             console.log(response);
         })
         .catch((error) => console.error(error));
-        location.reload();
+    location.reload();
 }
 
 const updatePokemon = () => {
-    const PID= parseInt(id);
-    console.log(PID);
-    const POKEDEX_VALUE = POKEDEXUP.value
-    const NAME_VALUE = NAMEUP.value;
-    const ATTACK_VALUE = ATTACKUP.value;
-    const DEFENCE_VALUE = DEFENCEUP.value;
-    const SPEED_VALUE = SPEEDUP.value;
-    const PRIMARYTYPE_VALUE = PRIMARYTYPEUP.value;
-    const SECONDARYTYPE_VALUE = SECONDARYTYPEUP.value;
-    const PRIMARYWEAKNESS_VALUE = PRIMARYWEAKNESSUP.value;
-    const SECONDARYWEAKNESS_VALUE = SECONDARYWEAKNESSUP.value;
-    const EVOLVES_VALUE = EVOLVESUP.value;
+    const PID = parseInt(id);
+    const POKEDEX_VALUE1 = POKEDEXUP.value
+    const NAME_VALUE1 = NAMEUP.value;
+    const ATTACK_VALUE1 = ATTACKUP.value;
+    const DEFENCE_VALUE1 = DEFENCEUP.value;
+    const SPEED_VALUE1 = SPEEDUP.value;
+    const PRIMARYTYPE_VALUE1 = PRIMARYTYPEUP.value;
+    const SECONDARYTYPE_VALUE1 = SECONDARYTYPEUP.value;
+    const PRIMARYWEAKNESS_VALUE1 = PRIMARYWEAKNESSUP.value;
+    const SECONDARYWEAKNESS_VALUE1 = SECONDARYWEAKNESSUP.value;
+    const EVOLVES_VALUE1 = EVOLVESUP.value;
 
     let obj = {
-        pokedex: POKEDEX_VALUE,
-        name: NAME_VALUE,
-        attack: ATTACK_VALUE,
-        defence: DEFENCE_VALUE,
-        speed: SPEED_VALUE,
-        primaryType: PRIMARYTYPE_VALUE,
-        secondaryType: SECONDARYTYPE_VALUE,
-        primaryWeakness: PRIMARYWEAKNESS_VALUE,
-        secondaryWeakness: SECONDARYWEAKNESS_VALUE,
-        evolves: EVOLVES_VALUE
+        pokeDex: POKEDEX_VALUE1,
+        name: NAME_VALUE1,
+        attack: ATTACK_VALUE1,
+        defence: DEFENCE_VALUE1,
+        speed: SPEED_VALUE1,
+        type1: PRIMARYTYPE_VALUE1,
+        type2: SECONDARYTYPE_VALUE1,
+        weakness1: PRIMARYWEAKNESS_VALUE1,
+        weakness2: SECONDARYWEAKNESS_VALUE1,
+        evolves: EVOLVES_VALUE1
     }
     axios
-        .put("http://localhost:8080/update/" + PID, {
+        .put("http://localhost:8080/update/" + PID, obj, {
             "headers": {
                 "Access-Control-Allow-Origin": "*"
             }
-        }, obj)
+        })
         .then((response) => {
-            ALERT.setAttribute("class", "alert alert-success");
-            ALERT.innerHTML = "Pokemon has been updated";
+            console.log(response);
             setTimeout(() => {
                 ALERT.removeAttribute("class");
                 ALERT.innerHTML = ""
             }, 1000)
         })
         .catch((error) => console.error(error));
+    location.reload();
 }
 
 const closeInput = () => {
@@ -165,7 +156,6 @@ const closeInput = () => {
 const updatePokemonBox = (id) => {
     document.getElementById(`update-box`).style.display = `block`;
     this.id = id;
-    console.log(id)
 }
 
 const removePokemon = (id) => {
@@ -180,7 +170,7 @@ const removePokemon = (id) => {
             }, 1000)
         })
         .catch((error) => console.error(error));
-        location.reload();
+    location.reload();
 
 
 }
