@@ -63,11 +63,11 @@ Link to my jira boards: https://philipsephton-qa.atlassian.net/jira/software/pro
 
 ## Built With
 
-* [Maven](https://maven.apache.org/) - Dependency Management
-Java 11
-JUnit 5
-Sql worbench 8.0
-Spring Boot - https://spring.io/projects/spring-boot
+* [Maven](https://maven.apache.org/) - Dependency Management,
+Java 11, 
+JUnit 5, 
+Sql worbench 8.0, 
+Spring Boot - https://spring.io/projects/spring-boot, 
 Bootstrap - https://getbootstrap.com/
 
 ## Versioning
@@ -85,5 +85,5 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Aswene Sivaraj and Savannah Vaithilingham, helped debug and correct code
+Aswene Sivaraj and Savannah Vaithilingham, helped debug and correct code, 
 D.S.Malik, Published JAVA Programming which i used to reference
