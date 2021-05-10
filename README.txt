@@ -1,4 +1,4 @@
-Pokemon CRUD application
+#Pokemon CRUD application
 
 This CRUD application is an application to assist with sorting pokemon inside a database. This application can help you manage your pokemon and compare the statistics of the pokemon you have. 
 
