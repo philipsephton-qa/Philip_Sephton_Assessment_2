@@ -153,7 +153,7 @@
         <form action="javascript:void(0);" method="post"></form>
     </div>
     <div class="container text-center" id="update-box" role="aria-hidden">
-        <form action="javascript:void(0);" method="POST">
+        <form action="javascript:void(0);" method="PUT" onsubmit="updatePokemon();">
             <input type="number" class="form-control" id="pokedexUp" placeholder="Pokedex Number">
             <input type="text" class="form-control" id="pokemonNameUp" placeholder="Pokemon Name">
             <input type="text" class="form-control" id="pokemonAttUp" placeholder="Pokemon Attack">
@@ -242,7 +242,7 @@
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select><br/>
-            <input type="button" onclick="updatePokemon();" value="save" class="btn btn-success">
+            <button type="submit" class="btn btn-success">Save Changes</button>
             <a onclick="closeInput()" aria-label="close">&#10006;</a>
         </form>
 

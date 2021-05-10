@@ -90,7 +90,7 @@ public class PokemonControllerIntegrationTest {
 	}
 	@Test
 	void testUpdate() throws Exception {
-		Pokemon bulbasaur = new Pokemon(1L, "bulbasaur", "grass", "poison", 3L, 4L, 3L, "fire", "ground", true);
+		Pokemon bulbasaur = new Pokemon(1L, 1L, "bulbasaur", "grass", "poison", 3L, 4L, 3L, "fire", "ground", true);
 		String bulbasaurAsJSON = this.mapper.writeValueAsString(bulbasaur);
 		RequestBuilder mockRequest =
 				put("/update/1")
