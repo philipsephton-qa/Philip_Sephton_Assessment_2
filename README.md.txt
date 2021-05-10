@@ -4,7 +4,7 @@ This CRUD application is an application to assist with sorting pokemon inside a 
 
 ## Getting Started
 
-To get a copy of the application working on your machine you will need windows 7 or higher, MySQL workbench and server installed and a copy of java installed.
+To get a copy of the application working on your machine you will need windows 7 or higher, MySQL workbench and server installed and a copy of java installed, as well as an internet browser.
 
 ### Prerequisites
 
@@ -39,8 +39,10 @@ Call this new Schema 'pokemon`.
 You will then have to navigate to the project and you should be able to run the project if this fails stop the application and replace `prod` after "spring.profiles.active="
 in `application.properties` to `create`, then run the application as a sprong boot project, you will then have to change it back to `prod` as your databases will be built.
 
+When your application is running you can then go on your chosen internet browser and type in, `http://127.0.0.1:5500/index.html`, there you should be able to see the website.
+You do not need an internet connection for this as it is locally instantiated.
 
-You can now run your application and create a customer then read it, whatever you create will then be saved to your database until you delete it with the function in the program.
+You can now run your application and create a Pokemon then read it on the web page, whatever you create will then be saved to your database until you delete it with the function on the website.
 
 ## Running the tests
 
