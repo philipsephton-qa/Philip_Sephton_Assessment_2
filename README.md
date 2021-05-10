@@ -45,6 +45,8 @@ You do not need an internet connection for this as it is locally instantiated.
 
 You can now run your application and create a Pokemon then read it on the web page, whatever you create will then be saved to your database until you delete it with the function on the website.
 
+If you encounter a problem where port 8080 is in use, go to cmd, with run as admin priviledges, and type in `netstat -aon` and scroll up to see what program is using it, making a note of the PID, the go to Task Manger -> Details, and end the task where the PID is the same to free up port 8080.
+
 ## Running the tests
 
 All the tests for this system are in the src/test/java file system, this mirrors the src/main/java filesystem, in its directories so that unit tests and integration tests for a particular class can be easily located and accessed. 
