@@ -36,7 +36,7 @@ on MySQL workbench navigate to the home screen and press the '+' icon next to My
 Call the Connection Name 'pokemon', set the connection method to Standard(TCP/IP), Keep the hostname at '127.0.01' and port '3306', username: 'root', password: 'root',
 Press test connection, if everything apears ok click on ok, double click on the new Connection you have created to access it,
 you will then have to create a new schema by clicking on the icon that looks like 2 cylindrical prisms on top of each other with a plus,
-Call this new Schema 'pokemon`.
+Call this new Schema `pokemon`.
 You will then have to navigate to the project and you should be able to run the project if this fails stop the application and replace `prod` after "spring.profiles.active="
 in `application.properties` to `create`, then run the application as a sprong boot project, you will then have to change it back to `prod` as your databases will be built.
 
@@ -58,7 +58,7 @@ I have also used mockito in the controller tests to mock functionality that the 
 ### Integration Tests
 All the integration tests test how the controller acts with the repo to ensure full functionality, I have done this as it will help me in troubleshooting the controller and repo and to help me identify any bugs that may be apparant.
 
-##Jira
+## Jira
 Link to my jira boards: https://philipsephton-qa.atlassian.net/jira/software/projects/A2/boards/4/backlog
 
 ## Built With
