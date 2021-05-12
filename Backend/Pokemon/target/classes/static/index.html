@@ -23,7 +23,7 @@
     </div><br />
     <div class="container text-center">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
+        <button type="button" id="imabutton" class="btn btn-success" data-toggle="modal" data-target="#addModal">
             Add a PokeMon
         </button>
 
@@ -131,7 +131,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success">Save
+                                <button type="submit" id="addBtn" class="btn btn-success">Save
                                     changes</button>
 
                             </div>
@@ -242,7 +242,7 @@
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select><br/>
-            <button type="submit" class="btn btn-success">Save Changes</button>
+            <button type="submit" id="updBtn" class="btn btn-success">Save Changes</button>
             <a onclick="closeInput()" aria-label="close">&#10006;</a>
         </form>
 
