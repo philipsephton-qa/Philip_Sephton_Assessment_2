@@ -53,11 +53,13 @@ const printToScreen = (information) => {
     const upBtn = document.createElement('button');
     upBtn.innerHTML = `Update`
     upBtn.setAttribute("class", "btn btn-warning");
+    upBtn.setAttribute("id", "updateSubmitButton");
     upBtn.addEventListener("click", () => updatePokemonBox(information.id));
 
     const rmBtn = document.createElement("a");
     rmBtn.innerText = `Remove`;
     rmBtn.setAttribute("class", "btn btn-danger");
+    rmBtn.setAttribute("id", "removePokemonButton")
     rmBtn.addEventListener("click", () => removePokemon(information.id));
 
     td1.appendChild(pokemon1);
