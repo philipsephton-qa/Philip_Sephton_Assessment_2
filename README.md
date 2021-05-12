@@ -45,7 +45,7 @@ You do not need an internet connection for this as it is locally instantiated.
 
 You can now run your application and create a Pokemon then read it on the web page, whatever you create will then be saved to your database until you delete it with the function on the website.
 
-If you encounter a problem where port 8080 is in use, go to cmd, with run as admin priviledges, and type in `netstat -aon` and scroll up to see what program is using it, making a note of the PID, the go to Task Manger -> Details, and end the task where the PID is the same to free up port 8080.
+If you encounter a problem where port 8080 is in use, go to cmd, with run as admin priviledges, and type in `netstat -aon` and scroll up to see what program is using it, making a note of the PID, the go to Task Manger -> Details, and end the task where the PID is the same to free up port 8080. If this port is for an important program then navigate in the project Pokemon -> src/main/resources -> application.properties and within the file you can change the port from 8080 to whatever would suit your needs.
 
 ## Running the tests
 
