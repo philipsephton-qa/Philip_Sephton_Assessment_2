@@ -75,7 +75,7 @@ Bootstrap - https://getbootstrap.com/
 
 ## Versioning
 
-Version 0.0.1 (Alpha)
+Version 0.0.2 (Alpha)
 
 ## Authors
 
