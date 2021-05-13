@@ -1,0 +1,16 @@
+input [type='submit'], button, [aria-label]{
+    cursor: pointer;
+}
+#update-box{
+    display: none;
+}
+#delete-box{
+    display: none;
+}
+td{
+    font-size: 14px;
+    width: 330px;
+    max-width: 330px;
+    word-wrap: break-word;
+
+}

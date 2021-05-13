@@ -1,0 +1,6 @@
+com\qa\pokemon\repo\PokemonRepo.class
+com\qa\pokemon\controller\PokemonController.class
+com\qa\pokemon\PokemonApplication.class
+com\qa\pokemon\domain\Pokemon.class
+com\qa\pokemon\service\Service.class
+com\qa\pokemon\service\PokemonService.class
