@@ -45,7 +45,7 @@ const printToScreen = (information) => {
     cardHolder.setAttribute("class", "col-sm-4");
     const card = document.createElement("div");
     card.setAttribute("class", "card");
-    card.setAttribute("style", "width: 20rem;")
+    card.setAttribute("style", "width: 18rem;")
     const cardHead = document.createElement("div");
     cardHead.setAttribute("class", "card-header");
     const cardBody = document.createElement("div");
@@ -55,13 +55,15 @@ const printToScreen = (information) => {
     const td2 = document.createElement("p");
     const td3 = document.createElement("p");
     const td4 = document.createElement("p");
-    const pokemonId = document.createTextNode(`Pokedex Number: ${information.pokeDex}`)
-    const pokemon1 = document.createTextNode(`Name: ${information.name}, Evolves: ${information.evolves}`)
-    const pokemon2 = document.createTextNode(`Attack: ${information.attack}, Defence: ${information.defence}, Speed: ${information.speed}`)
-    const pokemon3 = document.createTextNode(`Type: ${information.type1} ${information.type2}, Weakness: ${information.weakness1} ${information.weakness2}`)
+    const td5 = document.createElement("p");
+    const pokemonId = document.createTextNode(`Pokedex Number: ${information.pokeDex}`);
+    const pokemon1 = document.createTextNode(`Name: ${information.name}, Evolves: ${information.evolves}`);
+    const pokemon2 = document.createTextNode(`Attack: ${information.attack}, Defence: ${information.defence}, Speed: ${information.speed}`);
+    const pokemon3 = document.createTextNode(`Type: ${information.type1} ${information.type2}`);
+    const pokemon4 = document.createTextNode(`Weakness: ${information.weakness1} ${information.weakness2}`);
 
     const upBtn = document.createElement('button');
-    upBtn.innerHTML = `Update`
+    upBtn.innerHTML = `Update`;
     upBtn.setAttribute("class", "btn btn-warning");
     upBtn.setAttribute("id", "updateSubmitButton");
     upBtn.addEventListener("click", () => updatePokemonBox(information.id));
@@ -70,19 +72,21 @@ const printToScreen = (information) => {
     rmBtn.innerText = `Remove`;
     rmBtn.setAttribute("class", "btn btn-danger");
     rmBtn.setAttribute("style", "float: right");
-    rmBtn.setAttribute("id", "removePokemonButton")
+    rmBtn.setAttribute("id", "removePokemonButton");
     rmBtn.addEventListener("click", () => removePokemon(information.id));
 
     cardHead.appendChild(pokemonId)
     td1.appendChild(pokemon1);
     td2.appendChild(pokemon2);
     td3.appendChild(pokemon3);
-    td4.appendChild(upBtn);
-    td4.appendChild(rmBtn);
+    td4.appendChild(pokemon4);
+    td5.appendChild(upBtn);
+    td5.appendChild(rmBtn);
     cardBody.appendChild(td1);
     cardBody.appendChild(td2);
     cardBody.appendChild(td3);
     cardBody.appendChild(td4);
+    cardBody.appendChild(td5);
     cardBody.appendChild(br);
     card.appendChild(cardHead);
     card.appendChild(cardBody);

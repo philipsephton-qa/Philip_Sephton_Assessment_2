@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.qa</groupId>
 	<artifactId>Pokemon</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>Pokemon</name>
 	<description>Pokemon project for Spring Boot</description>
 	<properties>

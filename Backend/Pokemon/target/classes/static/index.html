@@ -17,9 +17,9 @@
         <h2>PokeMon Database</h2>
     </div><br />
     <div class="container rounded text-center">
-        <img src="./Resources/bulbasaur-stock-image.png" alt="Bulbasaur-image" height="100px" class="float-left">
-        <img src="./Resources/squirtle-stock-image.png" alt="Squirtle-image" height="100px">
-        <img src="./Resources/charmader-stock-image.png" alt="Charmander-image" height="100px" class="float-right">
+        <img src="https://www.nicepng.com/png/detail/99-992086_venusaur-png-free-stock-pokemon-bulbasaur.png" alt="Bulbasaur-image" height="100px" class="float-left">
+        <img src="https://www.pinclipart.com/picdir/middle/570-5700657_collection-of-free-squirtle-transparent-character-pokemon-transparent.png" alt="Squirtle-image" height="100px">
+        <img src="https://png.pngitem.com/pimgs/s/117-1172411_charmander-char-char-charmander-pokemon-pokemongo-free-charmander.png" alt="Charmander-image" height="100px" class="float-right">
     </div><br />
     <div class="container text-center">
         <!-- Button trigger modal -->
@@ -143,12 +143,10 @@
     </div>
     <div id="alertResponse"></div>
     <br />
-    <table id="data" class="container text-center">
-        <thead>
-            <h3 class="text-center">Pokemon</h3>
-        </thead>
-        <tbody id="dataBank"></tbody>
-    </table>
+<div class="container">
+    <div class="row" id="dataBank" onload="initialise();">
+    </div>
+</div>
     <div class="container" id="delete-box" role="aria-hidden">
         <form action="javascript:void(0);" method="post"></form>
     </div>

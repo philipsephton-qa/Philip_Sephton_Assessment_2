@@ -52,6 +52,7 @@ public class PokemonPageTest {
 		new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(page.getAddBtn()));
 		page.pokemonCreate("1", "bulbasaur", "3", "3", "3", "grass", "poison", "fire", "ground", "yes");
 		new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(page.getDatabank()));
+		driver.navigate().refresh();
 		assertTrue(page.getDatabank().getText().contains("bulbasaur"));
 	}
 
@@ -59,6 +60,7 @@ public class PokemonPageTest {
 	void updatePokemonTest(){
 		driver.get(URLPre+randomPort+URLSuff);
 		PokemonHomePage page = PageFactory.initElements(driver, PokemonHomePage.class);
+		new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(page.getUpdateBtn()));
 		page.getUpdateBtn().click();
 		new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(page.getUpdBtn()));
 		page.updatePokemon("7", "charmander", "4", "4", "3", "fire", "flying", "water", "rock", "yes");
@@ -71,6 +73,10 @@ public class PokemonPageTest {
 	void deletePokemonTest() {
 		driver.get(URLPre+randomPort+URLSuff);
 		PokemonHomePage page = PageFactory.initElements(driver, PokemonHomePage.class);
+		page.getModalButton().click();
+		new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(page.getAddBtn()));
+		page.pokemonCreate("1", "bulbasaur", "3", "3", "3", "grass", "poison", "fire", "ground", "yes");
+		new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOf(page.getDatabank()));
 		Object initialPage = page.getDatabank().getText();
 		page.getRmBtn().click();
 		Object finalPage = page.getDatabank().getText();
