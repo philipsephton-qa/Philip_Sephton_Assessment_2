@@ -58,6 +58,9 @@ I have also used mockito in the controller tests to mock functionality that the 
 ### Integration Tests
 All the integration tests test how the controller acts with the repo to ensure full functionality, I have done this as it will help me in troubleshooting the controller and repo and to help me identify any bugs that may be apparant.
 
+### Selenium Tests
+The selenium tests verify full functionality of the front end application, to run them you have to find the right driver for your browser on `https://www.selenium.dev/documentation/en/webdriver/driver_requirements/` and download the driver, the driver that i have included is for google chrome version 90.0.4430.xxx, after you have downloaded your driver replace it with the current driver, i would reccommend chrome for this. You can then run as Junit test and it should successfully run.
+
 ## Jira
 Link to my jira boards: https://philipsephton-qa.atlassian.net/jira/software/projects/A2/boards/4/backlog
 
